@@ -4,41 +4,11 @@
 #include <mysql.h>
 #include <iostream>
 #include "dataBaseAPI.h"
-using namespace std;
-int qstate;
+#include "bank.h"
 
 int main()
-{ /*
-	MYSQL* conn;
-	MYSQL_ROW row;
-	MYSQL_RES* res;
-	conn = mysql_init(0);
-
-	conn = mysql_real_connect(conn, "localhost", "root", "qweasd", "testdb", 3306, NULL, 0);
-
-	if (conn) {
-		puts("Successful connection to database!");
-
-		string query = "SELECT * FROM test";
-		const char* q = query.c_str();
-		qstate = mysql_query(conn, q);
-		if (!qstate)
-		{
-			res = mysql_store_result(conn);
-			while (row = mysql_fetch_row(res))
-			{
-				printf("ID: %s, Name: %s, Value: %s\n", row[0], row[1], row[2]);
-			}
-		}
-		else
-		{
-			cout << "Query failed: " << mysql_error(conn) << endl;
-		}
-	}
-	else {
-		puts("Connection to database has failed!");
-	}*/
-	dataBaseAPI & singleObject = dataBaseAPI::getSingleton();
+{ 
+	dataBaseAPI singleObject;
 	singleObject.test();
 	if (singleObject.isUserExist("Jimmy"))
 		std::cout << "user found"<<std::endl;
@@ -49,6 +19,18 @@ int main()
 		std::cout << "user ok"<<std::endl;
 	else
 		std::cout << "user not found"<<std::endl;
+
+	//std::string some = singleObject.hashPassword("asdzxc123");
+	if (singleObject.addNewUser("filip", "asdzxc", 1200))
+		std::cout << "add correct" << std::endl;
+	else
+		std::cout << "error during adding" << std::endl;
+	//proper app
+	Bank user(&singleObject);
+	if (user.userLogin("Jimmy", "bbb"))
+		std::cout << "user logged as Jimmy" << std::endl;
+	else
+		std::cout << "user does not exist or wrong password" << std::endl;
 
 
 	return 0;
