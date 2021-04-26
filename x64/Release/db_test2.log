@@ -1,7 +1,7 @@
-﻿  dataBaseAPI.cpp
+﻿  db_test2.cpp
   Trwa generowanie kodu
-  2 of 161 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
+  1 of 190 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   db_test2.vcxproj -> C:\Users\mrhau\source\repos\db_test2\x64\Release\db_test2.exe
